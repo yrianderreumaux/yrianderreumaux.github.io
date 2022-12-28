@@ -1,86 +1,104 @@
 <!DOCTYPE HTML>
 <!--
-	Solid State by HTML5 UP
+	Spectral by HTML5 UP
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 <html>
-<head>
-    <title>Generic - Solid State by HTML5 UP</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <link rel="stylesheet" href="assets/css/main.css" />
-    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-</head>
-<body class="is-preload">
+	<head>
+		<title>Generic - Spectral by HTML5 UP</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
 
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
 
-<!-- Page Wrapper -->
-<div id="page-wrapper">
+				<!-- Header -->
+					<header id="header">
+						<h1><a href="Home.html"></a></h1>
+						<nav id="nav">
+							<ul>
+								<li class="special">
+									<a href="#menu" class="menuToggle"><span>Menu</span></a>
+									<div id="menu">
+										<ul>
+											<li><a href="Home.html">Home</a></li>
+											<li><a href="Portfolio.html">Portfolio</a></li>
+											<li><a href="images/Derreumaux_resume_2022_12.pdf">Resume</a></li>
 
-    <!-- Header -->
-    <header id="header">
-        <h1><a href="index.html"></a></h1>
-        <nav>
-            <a href="#menu">Menu</a>
-        </nav>
-    </header>
+										</ul>
+									</div>
+								</li>
+							</ul>
+						</nav>
+					</header>
 
-    <!-- Menu -->
-    <nav id="menu">
-        <div class="inner">
-            <h2>Menu</h2>
-            <ul class="links">
-                <li><a href="index.html">About</a></li>
-                <li><a href="Research.html">Research</a></li>
-                <li><a href="Portfolio.html">Portfolio</a></li>
-                <li><a href="images/Derreumaux_resume_2022_12.pdf">Resume</a></li>
-            </ul>
-            <a href="#" class="close">Close</a>
-        </div>
-    </nav>
+				<!-- Main -->
+					<article id="main">
+						<header>
+							<h2>Portfolio</h2>
+						</header>
+						<section class="wrapper style5">
+							<div class="inner">
 
-    <!-- Wrapper -->
-    <section id="wrapper">
-        <header>
-            <div class="inner">
-                <img src="images/ZestySymbol.png" title="Zesty" width="100" height="100">
-                <h2></h2>
-                <p>I am one of three co-founders of <a href="https://www.getzesty.app/">Zesty</a>, a social cooking app designed to help home cooks create, organize, and share their recipes with their friends and family</p>
-            </div>
-        </header>
+								<h3>Zesty–Social Cooking App</h3>
+								<p>I am one of three co-founders of <a href="https://www.getzesty.app/">Zesty</a>, a social cooking app designed to help home cooks create, organize, and share their recipes with their friends and family</p>
+								<h2 class="major">Background</h2>
+								<p>As the COVID-19 pandemic swept the globe, I found myself with a lot of extra time on my hands, leading me to spend much of that first summer trying out new recipes. As I experimented with different recipes and techniques, I realized that it was difficult to keep track of all the recipes I had created or cooked. This led to the creation of Zesty, a platform where home cooks like me could share and discover new recipes, connect with each other, and exchange tips and inspiration.
+									In this portfolio, I will share some of the work I have done on the app, including user research, deploying a recommendation engine, and building a recipe scrape feature. I am excited to share my work with you and look forward to discussing how I can contribute to your team. <p>
 
-        <!-- Content -->
-        <div class="wrapper">
-            <div class="inner">
-                <h2 class="major">Background</h2>
-                <p>As the COVID-19 pandemic swept the globe, I found myself with a lot of extra time on my hands, leading me to spend much of that first summer trying out new recipes. As I experimented with different recipes and techniques, I realized that it was difficult to keep track of all the recipes I had created or cooked. This led to the creation of Zesty, a platform where home cooks like me could share and discover new recipes, connect with each other, and exchange tips and inspiration.
-                    In this portfolio, I will share some of the work I have done on the app, including user research, deploying a recommendation engine, and building a recipe scrape feature. I am excited to share my work with you and look forward to discussing how I can contribute to your team. <p>
+								<h2 class="major">Product Market fit</h2>
+								<p>To validate our intuitions and test whether people really do struggle to organize and share their recipes, we designed and conducted several surveys using a representative sample via CloudResearch (total N=900). Our only selection criteria were that our sample had to be active home cooks (defined as those that cook at least one meal a week).
+									Our research found that 83% of home cooks use two or more methods to organize their recipes. The majority also expressed dissatisfaction with their current organization method. When asked whether they would be interested in using a platform like Zesty to organize their recipes, the majority (87%) responded positively.
+								</p>
 
-                <h2 class="major">Product Market fit</h2>
-                <p>To validate our intuitions and test whether people really do struggle to organize and share their recipes, we designed and conducted several surveys using a representative sample via CloudResearch (total N=900). Our only selection criteria were that our sample had to be active home cooks (defined as those that cook at least one meal a week).
-                    Our research found that 83% of home cooks use two or more methods to organize their recipes. The majority also expressed dissatisfaction with their current organization method. When asked whether they would be interested in using a platform like Zesty to organize their recipes, the majority (87%) responded positively.
-                </p>
+								<h2 class="major">Personalized Recommendation Engine</h2>
+								<p>Our market research revealed that over 90% of people who visit recipe websites do so for inspiration about what to cook. Another 78% said they trust recommendations from their friends and family more than recommendations from recipe websites. We used this information to build a personalized recommendation engine that allows users to discover new recipes based on their personal tastes and preferences.</p>
+								Yrian applied his knowledge from graduate school to develop and deploy a deep collaborative filtering recommendation engine using Tensorflow, which is hosted on google cloud platform. The model uses users past interactions to generate a list of recommended recipes based on the preferences and behavior of similar users. The model uses a multi-layer perceptron (MLP) architecture, with multiple hidden layers of neurons to learn complex nonlinear relationships between the user and recipe features.</p>
+								<img src="images/CF_diagram.png"width="1100" height="600">
+								<p> <p>
+								<h2 class="major">Importing recipes from other websites</h2>
+								<p>Many home cooks struggle to organize their recipes. Often times, this is because recipes are stored in different places. Our newest feature allows users to easily import recipes from other websites, thereby allowing them to keep track of all their recipes in one place. Each recipe is stored in the same format, which also makes it easy to follow when you are cooking. </p>
+								<iframe width="800" height="500" src="https://www.youtube.com/embed/tt9J37NcJnY" frameborder="0" allowfullscreen></iframe>
+								<hr />
 
-                <h2 class="major">Personalized Recommendation Engine</h2>
-                <p>Our market research revealed that over 90% of people who visit recipe websites do so for inspiration about what to cook. Another 78% said they trust recommendations from their friends and family more than recommendations from recipe websites. We used this information to build a personalized recommendation engine that allows users to discover new recipes based on their personal tastes and preferences.</p>
-                    Yrian applied his knowledge from graduate school to develop and deploy a deep collaborative filtering recommendation engine using Tensorflow, which is hosted on google cloud platform. The model uses users past interactions to generate a list of recommended recipes based on the preferences and behavior of similar users. The model uses a multi-layer perceptron (MLP) architecture, with multiple hidden layers of neurons to learn complex nonlinear relationships between the user and recipe features.</p>
-                <img src="images/CF_diagram.png"width="1100" height="600">
-                <p> <p>
-                <h2 class="major">Importing recipes from other websites</h2>
-                <p>Many home cooks struggle to organize their recipes. Often times, this is because recipes are stored in different places. Our newest feature allows users to easily import recipes from other websites, thereby allowing them to keep track of all their recipes in one place. Each recipe is stored in the same format, which also makes it easy to follow when you are cooking. </p>
-                <iframe width="800" height="500" src="https://www.youtube.com/embed/tt9J37NcJnY" frameborder="0" allowfullscreen></iframe>
-            </div>
-        </div>
-</div>
+								<h4>Feugiat aliquam</h4>
+								<p>Nam sapien ante, varius in pulvinar vitae, rhoncus id massa. Donec varius ex in mauris ornare, eget euismod urna egestas. Etiam lacinia tempor ipsum, sodales porttitor justo. Aliquam dolor quam, semper in tortor eu, volutpat efficitur quam. Fusce nec fermentum nisl. Aenean erat diam, tempus aliquet erat.</p>
 
-<!-- Scripts -->
-<script src="assets/js/jquery.min.js"></script>
-<script src="assets/js/jquery.scrollex.min.js"></script>
-<script src="assets/js/browser.min.js"></script>
-<script src="assets/js/breakpoints.min.js"></script>
-<script src="assets/js/util.js"></script>
-<script src="assets/js/main.js"></script>
+								<p>Etiam iaculis nulla ipsum, et pharetra libero rhoncus ut. Phasellus rutrum cursus velit, eget condimentum nunc blandit vel. In at pulvinar lectus. Morbi diam ante, vulputate et imperdiet eget, fermentum non dolor. Ut eleifend sagittis tincidunt. Sed viverra commodo mi, ac rhoncus justo. Duis neque ligula, elementum ut enim vel, posuere finibus justo. Vivamus facilisis maximus nibh quis pulvinar. Quisque hendrerit in ipsum id tellus facilisis fermentum. Proin mauris dui, at vestibulum sit amet, auctor bibendum neque.</p>
 
-</body>
+							</div>
+						</section>
+					</article>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<ul class="icons">
+							<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+							<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+							<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+							<li><a href="#" class="icon brands fa-dribbble"><span class="label">Dribbble</span></a></li>
+							<li><a href="#" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+						</ul>
+						<ul class="copyright">
+							<li>&copy; Untitled</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+						</ul>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
 </html>
