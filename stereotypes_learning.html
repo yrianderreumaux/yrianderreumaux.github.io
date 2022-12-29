@@ -47,6 +47,9 @@
 
         <h3>Stereotypes Disrupt Probabilistic Category Learning</h3>
         <p></p>
+        <a href="https://psyarxiv.com/qr95k/"  target="_blank" rel="noopener noreferrer"class="special">Published in the Journal of Experimental Psychology: General</a>
+        </p></p>
+        <a href="https://github.com/yrianderreumaux/stereotypes_disrupt_learning" target="_blank" rel="noopener noreferrer"class="special">Code</a>
 
         <hr />
         <h3>Research Question</h3>
@@ -79,55 +82,84 @@
           <P>Schematic of the learning task in the Crime Face (A) and Weather Cloud (B) conditions. Participants learned the probabilities of the card patterns by selecting their choice and receiving feedback as to if they were correct or incorrect (right side of stimuli) as well as what the actual outcome was on that trial (left side of stimuli).</P>
 
           <img src="images/wptFig1.png" title="Zesty" width="700" height="400" class = "center">
-          <P></P>
-          <h3>Drift Diffusion Modeling</h3>
+          <hr/>
+          <h3>Building interactive paradigm using JavaScript</h3>
+          <p>Try the paradigm  <a href="http://www.sfsuspring18psych.com/">Here!</a></p></p>
 
-          <p>Drift diffusion modeling decomposes decisions into (1) the starting point of evidence accumulation (z) – a free parameter estimating an a priori preference for one of the two outcomes, and (2) the drift rate (v) – a free parameter estimating the precision with which evidence is accumulated towards the two outcomes.<p>
-          <img src="images/wptFig2.jpg" title="Zesty" width="700" height="400" class = "center">
+          <h4>Cover Story Display</h4>
+          <pre><code>function next_narrative() {
+    $("#narrative_0_text").hide();
+    $("#next_0").hide();
+    document.getElementById("narrative_1_text").style.display = "table";
+    $("#narrative_1_text").fadeIn("slow");
+    $("#next_1").show();
+}</code></pre>
+
+          <h4>Card Pattern Display</h4>
+
+          <pre><code>function generateTestSequence() { // generate the 200 trials
+
+for (var i = 0; i < patterns.length; i++) {
+   for (var j = 0; j < patterns[i].tsRounded; j++) {
+   var currentPattern = new Pattern(null, null, null, null, null);
+   currentPattern = jQuery.extend(true, {}, patterns[i]);
+   currentPattern.willSteal = "True";
+   nonRandomizedPatterns.push(currentPattern); //pushing instance of the current pattern to the nonRandomizedPatterns array
+}
+for (var k = 0; k < patterns[i].nTSRounded; k++) { //adding patterns with positive response criteria (they will not steal)
+   var currentPatternFalse = new Pattern(null, null, null, null, null);
+   currentPatternFalse = jQuery.extend(true, {}, patterns[i]);
+   currentPatternFalse.willSteal = "False";
+   nonRandomizedPatterns.push(currentPatternFalse);//pushing instance of the current pattern to the nonRandomizedPatterns array
+        }
+    }
+}</code></pre>
+
+          <h4>Practice Trials</h4>
+
+          <pre><code>function start_demo() {
+          demo = true;
+          setUp();
+          display_start();
+          document.getElementById("main_container").style.marginTop = "1%";
+          next_pattern_demo();
+          timeIntID = setInterval("next_pattern_timout()", 6000);
+          }</code></pre>
           <hr />
           <h3>Results</h3>
+          <h4>Growth Modeling</h4>
+          <p>To examine differences in learning across conditions, we estimated a logistic mixed model regressing accuracy onto a dummy coded factor for condition, as well as a continuous variable for time.
+          <p><p></p>
 
-          <p>Participants required less evidence before correctly predicting that the ingroup candidate was more honest (yellow) compared to the outgroup candidate (purple).
-            When the ingroup candidate was more honest, participant’s psychometric function was shifted left compared to when the outgroup candidate was more honest.
-          <p> <p>
-          (A) Comparison of DIC difference from null model reveals that z & v model performed significantly better than all other models.
-          (B & C) Density plots of participants individual posterior parameter estimates. The dashes line in panel B indicates the value of an unbiased parameter. (B) 99% of participants had a posterior drift rate that was positive, indicating that they weighted information that favored the ingroup candidate more than information that favored the outgroup candidate. <p>
-          <p> <p>
-          <div class="row">
-            <div class="column">
-              <img src="images/DDMFig4.jpg"  alt="Snow" style="width:100%">
-            </div>
-            <div class="column">
-              <img src="images/DDMFig3.jpg" alt="Forest" style="width:100%">
-            </div>
+            <P>Participants exhibited learning disruptions in the social compared to nonsocial learning context, despite repeated instructions that the social and non-social stimuli were unrelated to the outcome (Studies 1-2)<p>
 
-          </div>
+            <div class="row">
+                <div class="column">
+                    <img src="images/wptRes.png"  alt="Snow" style="width:100%">
+                </div>
+                <div class="column">
+                    <img src="images/AggPlot.png" alt="Forest" style="width:100%">
+                </div>
+
+            </div>
           <hr/>
           <h3>Discussion</h3>
           <p> We demonstrate that despite financial incentives for accuracy, social motivations internal to the individual bias information processing towards desired conclusions. Partisans required overall less and weaker evidence when correctly categorizing the ingroup as more honest compared to the outgroup, and were more accurate on trials when the ingroup candidate was more honest, compared to the outgroup. DDMs revealed that partisan biases jointly arise as a function of two distinct mechanisms.
             First, pre-existing preferences for believing the ingroup candidate was more honest prepared partisans to conclude that the ingroup was more honest, and therefore they needed less evidence to arrive at this conclusion (i.e., biased starting point). Second, partisans were more precise in accumulating evidence that favored the ingroup candidate compared to the outgroup, resulting in differential weighting of evidence that favored the ingroup (i.e., biased drift rate). <p>
-          <a href="https://pubmed.ncbi.nlm.nih.gov/36240612/"  target="_blank" rel="noopener noreferrer"class="special">Published in Cognition</a>
-        </p></p>
-          <a href="https://github.com/yrianderreumaux/Computational-mechanisms-underlying-partisan-information-processing" target="_blank" rel="noopener noreferrer"class="special">Code</a>
-      </div>
+
     </section>
   </article>
 
-  <!-- Footer -->
-  <footer id="footer">
-    <ul class="icons">
-      <li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-      <li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-      <li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-      <li><a href="#" class="icon brands fa-dribbble"><span class="label">Dribbble</span></a></li>
-      <li><a href="#" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
-    </ul>
-    <ul class="copyright">
-      <li>&copy; Untitled</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-    </ul>
-  </footer>
+          <!-- Footer -->
+          <footer id="footer">
+              <ul class="icons">
 
-</div>
+                  <li><a href="https://twitter.com/yderreum" class="icon brands fa-twitter"><span  class="label">Twitter</span></a></li>
+                  <li><a href="https://github.com/yrianderreumaux" class="icon brands fa-github"><span class="label">Github</span></a></li>
+              </ul>
+          </footer>
+
+      </div>
 
 <!-- Scripts -->
 <script src="assets/js/jquery.min.js"></script>

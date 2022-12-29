@@ -6,7 +6,7 @@
 -->
 <html>
 <head>
-    <title>Generic - Spectral by HTML5 UP</title>
+    <title>Recommendation Engine</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="assets/css/main.css" />
@@ -36,27 +36,92 @@
         </nav>
     </header>
 
-    <!-- Main -->
-    <article id="main">
-        <header>
-            <h2>Generic Page</h2>
-            <p>Aliquam ut ex ut interdum donec amet imperdiet eleifend</p>
-        </header>
+<!--    &lt;!&ndash; Main &ndash;&gt;-->
+<!--    <article id="main">-->
+<!--        <header>-->
+<!--            <h2>Generic Page</h2>-->
+<!--            <p>Aliquam ut ex ut interdum donec amet imperdiet eleifend</p>-->
+<!--        </header>-->
         <section class="wrapper style5">
             <div class="inner">
 
-                <h3>Lorem ipsum dolor</h3>
-                <p>Morbi mattis mi consectetur tortor elementum, varius pellentesque velit convallis. Aenean tincidunt lectus auctor mauris maximus, ac scelerisque ipsum tempor. Duis vulputate ex et ex tincidunt, quis lacinia velit aliquet. Duis non efficitur nisi, id malesuada justo. Maecenas sagittis felis ac sagittis semper. Curabitur purus leo, tempus sed finibus eget, fringilla quis risus. Maecenas et lorem quis sem varius sagittis et a est. Maecenas iaculis iaculis sem. Donec vel dolor at arcu tincidunt bibendum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Fusce ut aliquet justo. Donec id neque ipsum. Integer eget ultricies odio. Nam vel ex a orci fringilla tincidunt. Aliquam eleifend ligula non velit accumsan cursus. Etiam ut gravida sapien.</p>
+                <h3>Recipe Recommendation Engine</h3>
 
-                <p>Vestibulum ultrices risus velit, sit amet blandit massa auctor sit amet. Sed eu lectus sem. Phasellus in odio at ipsum porttitor mollis id vel diam. Praesent sit amet posuere risus, eu faucibus lectus. Vivamus ex ligula, tempus pulvinar ipsum in, auctor porta quam. Proin nec dui cursus, posuere dui eget interdum. Fusce lectus magna, sagittis at facilisis vitae, pellentesque at etiam. Quisque posuere leo quis sem commodo, vel scelerisque nisi scelerisque. Suspendisse id quam vel tortor tincidunt suscipit. Nullam auctor orci eu dolor consectetur, interdum ullamcorper ante tincidunt. Mauris felis nec felis elementum varius.</p>
+                <p>Our market research showed that over 90% of people who visit recipe websites do so for inspiration, and 78% trust recommendations from friends and family more than websites. In response, I designed and deployed a personalized recommendation system using TensorFlow and TFX.
+                    I use a deep collaborative filtering model to learn complex nonlinear relationships between the user and recipe features. This allows the model to generate personalized recommendations that are tailored to each user's unique preferences and interests.</p>
 
+                <h3>Overview of Recommendation Pipeline</h3>
+
+                <p>The goal of recommendation engine was to create a fully automated pipeline that includes querying the data, training the model, and pushing it to production.</p>
+                <img src="images/CF_diagram.png" title="Zesty" width="500" height="300" class = "center">
                 <hr />
 
-                <h4>Feugiat aliquam</h4>
-                <p>Nam sapien ante, varius in pulvinar vitae, rhoncus id massa. Donec varius ex in mauris ornare, eget euismod urna egestas. Etiam lacinia tempor ipsum, sodales porttitor justo. Aliquam dolor quam, semper in tortor eu, volutpat efficitur quam. Fusce nec fermentum nisl. Aenean erat diam, tempus aliquet erat.</p>
+                <h3>Step by step guide to the first Beta model</h3>
 
-                <p>Etiam iaculis nulla ipsum, et pharetra libero rhoncus ut. Phasellus rutrum cursus velit, eget condimentum nunc blandit vel. In at pulvinar lectus. Morbi diam ante, vulputate et imperdiet eget, fermentum non dolor. Ut eleifend sagittis tincidunt. Sed viverra commodo mi, ac rhoncus justo. Duis neque ligula, elementum ut enim vel, posuere finibus justo. Vivamus facilisis maximus nibh quis pulvinar. Quisque hendrerit in ipsum id tellus facilisis fermentum. Proin mauris dui, at vestibulum sit amet, auctor bibendum neque.</p>
+                <p>Below is a broad overview of the model building process</p>
 
+                <h5>Query BigQuery for most recent interactions</h5>
+                <pre><code>query = """SELECT * FROM
+(SELECT event_timestamp, event_name, key, value.string_value
+FROM `zesty-48258.analytics_259899317.events_*`, UNNEST(event_params))
+PIVOT(MAX(string_value) FOR key IN ('user', 'recipe'))
+WHERE event_name ="recipe_liked"
+OR event_name ="recipe_saved"
+OR event_name ="view_recipe_other"
+AND recipe IS NOT NULL
+ORDER BY event_timestamp
+DESC</code></pre>
+                <h5>Convert log to dataframe and check data types</h5>
+                <pre><code>df = (
+    bqclient.query(query)
+    .result()
+    .to_dataframe(
+        create_bqstorage_client=True,))
+ df = df.astype({"recipe_id":'string', "user_id":'string'})</code></pre>
+
+                <h5>Create map for ratings and recipes</h5>
+
+                <pre><code>ratings = ratings.map(lambda x: {
+     "recipe_id": x["recipe_id"],
+     "user_id": x["user_id"]})
+recipes = ratings.map(lambda x: x["recipe_id"])</code></pre>
+
+                <h5>Create simple user and recipe models</h5>
+
+                <pre><code>user_model = tf.keras.Sequential([
+  tf.keras.layers.experimental.preprocessing.StringLookup(
+      vocabulary=unique_user_ids, mask_token=None),
+  # We add an additional embedding to account for unknown tokens.
+  tf.keras.layers.Embedding(len(unique_user_ids) + 1, embedding_dimension)])
+
+recipe_model = tf.keras.Sequential([
+  tf.keras.layers.experimental.preprocessing.StringLookup(
+      vocabulary=unique_recipe_ids, mask_token=None),
+  tf.keras.layers.Embedding(len(unique_recipe_ids) + 1, embedding_dimension)])</code></pre>
+
+                <h5>Build model</h5>
+
+                <pre><code>class ZestyModel(tfrs.Model):
+
+def __init__(self, user_model, recipe_model):
+    super().__init__()
+    self.recipe_model: tf.keras.Model = recipe_model
+    self.user_model: tf.keras.Model = user_model
+    self.task: tf.keras.layers.Layer = task
+
+def compute_loss(self, features: Dict[Text, tf.Tensor], training=False) -> tf.Tensor:
+    # We pick out the user features and pass them into the user model.
+    user_embeddings = self.user_model(features["user_id"])
+    # And pick out the recipe features and pass them into the recipe model,
+    # getting embeddings back.
+    positive_recipe_embeddings = self.recipe_model(features["recipe_id"])
+
+    # The task computes the loss and the metrics.
+return self.task(user_embeddings, positive_recipe_embeddings)</code></pre>
+
+                <h4>Tangible outcomes after deployment</h4>
+
+                <p>Since deploying the recommendation engine, we have seen a significant increase in user engagement and satisfaction. During the first month, user engagement increased by 30%, and we continue to receive positive feedback from users about the personalized recommendations. Overall, the recommendation engine has been a valuable addition to the Zesty platform, helping users discover new recipes and connect with their communities through food.</p>
             </div>
         </section>
     </article>
@@ -69,9 +134,6 @@
             <li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
             <li><a href="#" class="icon brands fa-dribbble"><span class="label">Dribbble</span></a></li>
             <li><a href="#" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
-        </ul>
-        <ul class="copyright">
-            <li>&copy; Untitled</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
         </ul>
     </footer>
 

@@ -54,6 +54,9 @@
 <!--                -->
                 <h3>Computational Mechanisms Underlying Politically Motivated Reasoning</h3>
                 <p>Decomposing the influence of prior beliefs and evidence accumulation</p>
+                <a href="https://pubmed.ncbi.nlm.nih.gov/36240612/"  target="_blank" rel="noopener noreferrer"class="special">Published in Cognition</a>
+                </p></p>
+                <a href="https://github.com/yrianderreumaux/Computational-mechanisms-underlying-partisan-information-processing" target="_blank" rel="noopener noreferrer"class="special">Code</a>
 
                 <hr />
                 <h3>Research Question</h3>
@@ -85,27 +88,27 @@
                     <P>On each trial (representing a different deidentified topic) participants saw Democrat (denoted in blue) and Republican (denoted in red) fact-check scores move across the screen and had to categorize as quickly and accurately as possible which candidate was more accurate. Fact-check scores were randomly drawn from two normal distributions based on which candidate happened to be more honest on that issue (randomized across trials). Participants were incentivized to be accurate and could make their guesses after seeing at least three fact-check scores.
                         Note: In this example, the Republican candidate made more accurate statements.</P>
 
-                    <img src="images/DDMFig1.jpg" title="Zesty" width="700" height="400" class = "center">
+                    <img src="images/DDMFig1.png" title="Zesty" width="500" height="300" class = "center">
                     <P></P>
                     <h3>Drift Diffusion Modeling</h3>
-
+                    <p>I used the HDDM toolbox in Python to conduct hierarchical Bayesian parameter estimation of the Drift Diffusion Model<p>
                     <p>Drift diffusion modeling decomposes decisions into (1) the starting point of evidence accumulation (z) – a free parameter estimating an a priori preference for one of the two outcomes, and (2) the drift rate (v) – a free parameter estimating the precision with which evidence is accumulated towards the two outcomes.<p>
-                    <img src="images/DDMFig2.jpg" title="Zesty" width="700" height="400" class = "center">
+                    <img src="images/DDMFig2.png" title="Zesty" width="600" height="300" class = "center">
                     <hr />
                     <h3>Results</h3>
-
+                    <h4>Logistic Regression (left figure)</h4>
                     <p>Participants required less evidence before correctly predicting that the ingroup candidate was more honest (yellow) compared to the outgroup candidate (purple).
                         When the ingroup candidate was more honest, participant’s psychometric function was shifted left compared to when the outgroup candidate was more honest.
-                        <p> <p>
+                    <h4>Drift Diffusion Results (right figure)</h4>
                         (A) Comparison of DIC difference from null model reveals that z & v model performed significantly better than all other models.
                         (B & C) Density plots of participants individual posterior parameter estimates. The dashes line in panel B indicates the value of an unbiased parameter. (B) 99% of participants had a posterior drift rate that was positive, indicating that they weighted information that favored the ingroup candidate more than information that favored the outgroup candidate. <p>
                     <p> <p>
                     <div class="row">
                         <div class="column">
-                            <img src="images/DDMFig4.jpg"  alt="Snow" style="width:100%">
+                            <img src="images/DDMFig4.png"  alt="Snow" style="width:100%">
                         </div>
                         <div class="column">
-                            <img src="images/DDMFig3.jpg" alt="Forest" style="width:100%">
+                            <img src="images/DDMFig3.png" alt="Forest" style="width:100%">
                         </div>
 
                     </div>
@@ -113,28 +116,20 @@
                     <h3>Discussion</h3>
                     <p> We demonstrate that despite financial incentives for accuracy, social motivations internal to the individual bias information processing towards desired conclusions. Partisans required overall less and weaker evidence when correctly categorizing the ingroup as more honest compared to the outgroup, and were more accurate on trials when the ingroup candidate was more honest, compared to the outgroup. DDMs revealed that partisan biases jointly arise as a function of two distinct mechanisms.
                         First, pre-existing preferences for believing the ingroup candidate was more honest prepared partisans to conclude that the ingroup was more honest, and therefore they needed less evidence to arrive at this conclusion (i.e., biased starting point). Second, partisans were more precise in accumulating evidence that favored the ingroup candidate compared to the outgroup, resulting in differential weighting of evidence that favored the ingroup (i.e., biased drift rate). <p>
-                    <a href="https://pubmed.ncbi.nlm.nih.gov/36240612/"  target="_blank" rel="noopener noreferrer"class="special">Published in Cognition</a>
-                    </p></p>
-                <a href="https://github.com/yrianderreumaux/Computational-mechanisms-underlying-partisan-information-processing" target="_blank" rel="noopener noreferrer"class="special">Code</a>
-            </div>
+
         </section>
     </article>
 
-    <!-- Footer -->
-    <footer id="footer">
-        <ul class="icons">
-            <li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-            <li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-            <li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-            <li><a href="#" class="icon brands fa-dribbble"><span class="label">Dribbble</span></a></li>
-            <li><a href="#" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
-        </ul>
-        <ul class="copyright">
-            <li>&copy; Untitled</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-        </ul>
-    </footer>
+                <!-- Footer -->
+                <footer id="footer">
+                    <ul class="icons">
 
-</div>
+                        <li><a href="https://twitter.com/yderreum" class="icon brands fa-twitter"><span  class="label">Twitter</span></a></li>
+                        <li><a href="https://github.com/yrianderreumaux" class="icon brands fa-github"><span class="label">Github</span></a></li>
+                    </ul>
+                </footer>
+
+            </div>
 
 <!-- Scripts -->
 <script src="assets/js/jquery.min.js"></script>
