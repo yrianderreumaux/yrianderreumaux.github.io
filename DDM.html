@@ -1,4 +1,5 @@
-<!DOCTYPE HTML>
+
+                <!DOCTYPE HTML>
 <!--
 	Spectral by HTML5 UP
 	html5up.net | @ajlkn
@@ -28,7 +29,7 @@
                         <ul>
                             <li><a href="index.html">Home</a></li>
                             <li><a href="Portfolio.html">Portfolio</a></li>
-                            <li><a href="images/Derreumaux_resume_2022_12.pdf">Resume</a></li>
+                            <li><a href="images/Derreumaux_Website_Resume.pdf">Resume</a></li>
                         </ul>
                     </div>
                 </li>
@@ -36,100 +37,79 @@
         </nav>
     </header>
 
-    <!-- Main -->
-<!--    <article id="main">-->
-<!--        <header>-->
-<!--            <h2>Drift Diffusion Modeling</h2>-->
-<!--            <p>Aliquam ut ex ut interdum donec amet imperdiet eleifend</p>-->
-<!--        </header>-->
-        <section class="wrapper style5">
-            <div class="inner">
-<!--                <article>-->
-<!--                    <a href="#" class="image"><img src="images/DDM_viz.jpg" alt="" /></a>-->
-<!--                    <h3 class="major">Computational Underpinnings of Partisan Motivated Reasoning </h3>-->
-<!--                    <p>Decomposing political biases using drift diffusion modeling (published in Cognition)</p>-->
-<!--                    <a href="https://psyarxiv.com/g6wq9/"  target="_blank" rel="noopener noreferrer"class="special">Preprint</a>-->
-<!--                    <a href="https://github.com/yrianderreumaux/Computational-mechanisms-underlying-partisan-information-processing"  target="_blank" rel="noopener noreferrer"class="special">code</a>-->
-<!--                </article>-->
-<!--                -->
-                <h3>Computational Mechanisms Underlying Politically Motivated Reasoning</h3>
-                <p>Decomposing the influence of prior beliefs and evidence accumulation</p>
-                <a href="https://pubmed.ncbi.nlm.nih.gov/36240612/"  target="_blank" rel="noopener noreferrer"class="special">Published in Cognition</a>
-                </p></p>
-                <a href="https://github.com/yrianderreumaux/Computational-mechanisms-underlying-partisan-information-processing" target="_blank" rel="noopener noreferrer"class="special">Code</a>
+    <section class="wrapper style5">
+        <div class="inner">
+            <h3>Computational Mechanisms Underlying Politically Motivated Reasoning</h3>
+            <p>Decomposing the influence of prior beliefs and evidence accumulation</p>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/36240612/" target="_blank" rel="noopener noreferrer" class="special">Published in Cognition</a>
+            <a href="https://github.com/yrianderreumaux/Computational-mechanisms-underlying-partisan-information-processing" target="_blank" rel="noopener noreferrer" class="special">Code</a>
 
+            <hr />
+            <h3>Research Question</h3>
+            <p>Despite unprecedented access to information, partisans increasingly disagree about basic facts that are backed by data, posinga serious threat to a democracy that relies on finding common ground based on objective truths. What explains such fundamental disagreements?</p>
+
+            <section>
+                <h3>Competing Hypotheses</h3>
+                <div class="row">
+                    <div class="col-12 col-12-medium">
+                        <ul>
+                            <li>Prior beliefs render pre-existing beliefs resistant to change</li>
+                            <li>Motivations bias how people process new information</li>
+                    </div>
+                </div>
+                <hr/>
+                <h3>Method</h3>
+                <h4>Participants</h4>
+                <p>(N = 182) were recruited from CloudResearch. 58% of participants self-identified as Democrats</p>
+                <h4>Personality Measures</h4>
+                <div class="row">
+                    <div class="col-12 col-10-medium">
+                        <ul>
+                            <li>Cognitive Reflection (Omega = .65)</li>
+                            <li>Numeracy (Omega = .75)</li>
+                            <li>Need for Cognition (Omega = .89)</li>
+                    </div>
+                </div>
+                <h4>Procedure</h4>
+                <p>On each trial (representing a different deidentified topic) participants saw Democrat (denoted in blue) and Republican (denoted in red) fact-check scores move across the screen and had to categorize as quickly and accurately as possible which candidate was more accurate. Fact-check scores were randomly drawn from two normal distributions based on which candidate happened to be more honest on that issue (randomized across trials). Participants were incentivized to be accurate and could make their guesses after seeing at least three fact-check scores.
+                    Note: In this example, the Republican candidate made more accurate statements.</p>
+
+                <img data-src="images/DDMFig1.jpg" title="Zesty" width="500" height="300" class="lazyload center" loading="lazy">
+                <h3>Drift Diffusion Modeling</h3>
+                <p>I used the HDDM toolbox in Python to conduct hierarchical Bayesian parameter estimation of the Drift Diffusion Model</p>
+                <p>Drift diffusion modeling decomposes decisions into (1) the starting point of evidence accumulation (z) – a free parameter estimating an a priori preference for one of the two outcomes, and (2) the drift rate (v) – a free parameter estimating the precisionwith which evidence is accumulated towards the two outcomes.</p>
+                <img data-src="images/DDMFig2.jpg" title="Zesty" width="600" height="300" class="lazyload center" loading="lazy">
                 <hr />
-                <h3>Research Question</h3>
-                <p>Despite unprecedented access to information, partisans increasingly disagree about basic facts that are backed by data, posing a serious threat to a democracy that relies on finding common ground based on objective truths. What explains such fundamental disagreements?  </p>
-
-                <section>
-                    <h3>Competing Hypotheses</h3>
-                    <div class="row">
-                        <div class="col-12 col-12-medium">
-                            <ul>
-                                <li>Prior beliefs render pre-existing beliefs resistant to change</li>
-                                <li>Motivations bias how people process new information</li>
-                        </div>
+                <h3>Results</h3>
+                <h4>Logistic Regression (left figure)</h4>
+                <p>Participants required less evidence before correctly predicting that the ingroup candidate was more honest (yellow) compared to the outgroup candidate (purple).
+                    When the ingroup candidate was more honest, participant’s psychometric function was shifted left compared to when the outgroup candidate was more honest.
+                <h4>Drift Diffusion Results (right figure)</h4>
+                (A) Comparison of DIC difference from null model reveals that z & v model performed significantly better than all other models.
+                (B & C) Density plots of participants individual posterior parameter estimates. The dashes line in panel B indicates the value of an unbiased parameter. (B) 99% of participants had a posterior drift rate that was positive, indicating that they weighted information that favored the ingroup candidate more than information that favored the outgroup candidate.</p>
+                <div class="row">
+                    <div class="column">
+                        <img data-src="images/DDMFig4.jpg" alt="Snow" class="lazyload" style="width:100%" loading="lazy">
                     </div>
-                    <hr/>
-                    <h3>Method</h3>
-                    <h4>Participants</h4>
-                    <P>(N = 182) were recruited from CloudResearch. 58% of participants self-identified as Democrats</P>
-                    <h4>Personality Measures</h4>
-                    <div class="row">
-                        <div class="col-12 col-10-medium">
-                            <ul>
-                                <li>Cognitive Reflection (Omega = .65)</li>
-                                <li>Numeracy (Omega = .75)</li>
-                                <li>Need for Cognition (Omega = .89)</li>
-                        </div>
+                    <div class="column">
+                        <img data-src="images/DDMFig3.jpg" alt="Forest" class="lazyload" style="width:100%" loading="lazy">
                     </div>
-                    <h4>Procedure</h4>
-                    <P>On each trial (representing a different deidentified topic) participants saw Democrat (denoted in blue) and Republican (denoted in red) fact-check scores move across the screen and had to categorize as quickly and accurately as possible which candidate was more accurate. Fact-check scores were randomly drawn from two normal distributions based on which candidate happened to be more honest on that issue (randomized across trials). Participants were incentivized to be accurate and could make their guesses after seeing at least three fact-check scores.
-                        Note: In this example, the Republican candidate made more accurate statements.</P>
+                </div>
+                <hr/>
+                <h3>Discussion</h3>
+                <p>We demonstrate that despite financial incentives for accuracy, social motivations internal to the individual bias information processing towards desired conclusions. Partisans required overall less and weaker evidence when correctly categorizing the ingroup as more honest compared to the outgroup, and were more accurate on trials when the ingroup candidate was more honest, compared to the outgroup. DDMs revealed that partisan biases jointly arise as a function of two distinct mechanisms.
+                    First, pre-existing preferences for believing the ingroup candidate was more honest prepared partisans to conclude that the ingroup was more honest, and therefore they needed less evidence to arrive at this conclusion (i.e., biased starting point). Second, partisans were more precise in accumulating evidence that favored the ingroup candidate compared to the outgroup, resulting in differential weighting of evidence that favored the ingroup (i.e., biased drift rate).</p>
+            </section>
+        </div>
 
-                    <img src="images/DDMFig1.png" title="Zesty" width="500" height="300" class = "center">
-                    <P></P>
-                    <h3>Drift Diffusion Modeling</h3>
-                    <p>I used the HDDM toolbox in Python to conduct hierarchical Bayesian parameter estimation of the Drift Diffusion Model<p>
-                    <p>Drift diffusion modeling decomposes decisions into (1) the starting point of evidence accumulation (z) – a free parameter estimating an a priori preference for one of the two outcomes, and (2) the drift rate (v) – a free parameter estimating the precision with which evidence is accumulated towards the two outcomes.<p>
-                    <img src="images/DDMFig2.png" title="Zesty" width="600" height="300" class = "center">
-                    <hr />
-                    <h3>Results</h3>
-                    <h4>Logistic Regression (left figure)</h4>
-                    <p>Participants required less evidence before correctly predicting that the ingroup candidate was more honest (yellow) compared to the outgroup candidate (purple).
-                        When the ingroup candidate was more honest, participant’s psychometric function was shifted left compared to when the outgroup candidate was more honest.
-                    <h4>Drift Diffusion Results (right figure)</h4>
-                        (A) Comparison of DIC difference from null model reveals that z & v model performed significantly better than all other models.
-                        (B & C) Density plots of participants individual posterior parameter estimates. The dashes line in panel B indicates the value of an unbiased parameter. (B) 99% of participants had a posterior drift rate that was positive, indicating that they weighted information that favored the ingroup candidate more than information that favored the outgroup candidate. <p>
-                    <p> <p>
-                    <div class="row">
-                        <div class="column">
-                            <img src="images/DDMFig4.png"  alt="Snow" style="width:100%">
-                        </div>
-                        <div class="column">
-                            <img src="images/DDMFig3.png" alt="Forest" style="width:100%">
-                        </div>
-
-                    </div>
-                    <hr/>
-                    <h3>Discussion</h3>
-                    <p> We demonstrate that despite financial incentives for accuracy, social motivations internal to the individual bias information processing towards desired conclusions. Partisans required overall less and weaker evidence when correctly categorizing the ingroup as more honest compared to the outgroup, and were more accurate on trials when the ingroup candidate was more honest, compared to the outgroup. DDMs revealed that partisan biases jointly arise as a function of two distinct mechanisms.
-                        First, pre-existing preferences for believing the ingroup candidate was more honest prepared partisans to conclude that the ingroup was more honest, and therefore they needed less evidence to arrive at this conclusion (i.e., biased starting point). Second, partisans were more precise in accumulating evidence that favored the ingroup candidate compared to the outgroup, resulting in differential weighting of evidence that favored the ingroup (i.e., biased drift rate). <p>
-
-        </section>
-    </article>
-
-                <!-- Footer -->
-                <footer id="footer">
-                    <ul class="icons">
-
-                        <li><a href="https://twitter.com/yderreum" class="icon brands fa-twitter"><span  class="label">Twitter</span></a></li>
-                        <li><a href="https://github.com/yrianderreumaux" class="icon brands fa-github"><span class="label">Github</span></a></li>
-                    </ul>
-                </footer>
-
-            </div>
+        <!-- Footer -->
+        <footer id="footer">
+            <ul class="icons">
+                <li><a href="https://twitter.com/yderreum" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+                <li><a href="https://github.com/yrianderreumaux" class="icon brands fa-github"><span class="label">Github</span></a></li>
+            </ul>
+        </footer>
+</div>
 
 <!-- Scripts -->
 <script src="assets/js/jquery.min.js"></script>
@@ -137,8 +117,9 @@
 <script src="assets/js/jquery.scrolly.min.js"></script>
 <script src="assets/js/browser.min.js"></script>
 <script src="assets/js/breakpoints.min.js"></script>
-<script src="assets/js/util.js"></script>
-<script src="assets/js/main.js"></script>
+<script src="assets/js/util.min.js"></script>
+<script src="assets/js/main.min.js"></script>
 
 </body>
-</html>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js" async></script>
+                </html>

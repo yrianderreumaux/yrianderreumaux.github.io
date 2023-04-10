@@ -28,7 +28,7 @@
                         <ul>
                             <li><a href="index.html">Home</a></li>
                             <li><a href="Portfolio.html">Portfolio</a></li>
-                            <li><a href="images/Derreumaux_resume_2022_12.pdf">Resume</a></li>
+                            <li><a href="images/Derreumaux_Website_Resume.pdf">Resume</a></li>
                         </ul>
                     </div>
                 </li>
@@ -50,8 +50,7 @@
             <div class="inner">
 
                 <h2>Zesty Social Cooking Platform</h2>
-                <img src="images/ZestySymbol.png" title="Zesty" width="100" height="100">
-                <hr />
+                <img data-src="images/ZestySymbol.png" title="Zesty" width="100" height="100" class="lazyload">                <hr />
                 <h3>Background</h3>
                 <p>As the COVID-19 pandemic swept the globe, I found myself with a lot of extra time on my hands, and I spent much of the first summer working on different recipes. As I experimented with different recipes and techniques, I realized that it was difficult to keep track of all the recipes I had created or cooked.
                     This led to the creation of Zesty, a platform where home cooks like me could share and discover new recipes, connect with each other, and exchange tips and inspiration. </p>
@@ -91,8 +90,9 @@
                 <h4>Importing Recipes</h4>
                 <P>One of the key features of Zesty is the ability for users to import recipes from other websites and sources. To enable this feature, I developed a python script that scrapes meta data from recipe websites. This allows users to easily import recipes from their favorite websites and bring them into the Zesty platform. I am currently working on a new feature that will allow users to import recipes based on pictures of recipes.
                     We are in the process of building the frontend design and plan to launch this new feature in the new year. </P>
-                <iframe width="800" height="500" src="https://www.youtube.com/embed/tt9J37NcJnY" frameborder="0" allowfullscreen></iframe>
-
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/tt9J37NcJnY" frameborder="0" allowfullscreen></iframe>
+                </div>
             </div>
         </section>
     </article>
@@ -118,4 +118,5 @@
 <script src="assets/js/main.js"></script>
 
 </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js" async></script>
 </html>
