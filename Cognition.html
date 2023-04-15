@@ -1,0 +1,147 @@
+
+<!DOCTYPE HTML>
+<!--
+	Spectral by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+<head>
+    <title>Computational Mechanisms</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+</head>
+<body class="is-preload">
+
+<!-- Page Wrapper -->
+<div id="page-wrapper">
+
+    <!-- Header -->
+    <header id="header">
+        <h1><a href="index.html"></a></h1>
+        <nav id="nav">
+            <ul>
+                <li class="special">
+                    <a href="#menu" class="menuToggle"><span>Menu</span></a>
+                    <div id="menu">
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="images/Derreumaux_Website_Resume.pdf">Resume</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="wrapper style5">
+        <div class="inner">
+            <h3>Drift Diffusion Modeling in Political Decision-Making</h3>
+            <p>Investigating the impact of cognitive biases on information processing and belief updating</p>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/36240612/" target="_blank" rel="noopener noreferrer" class="special">Published in Cognition</a>
+            <br>
+            <a href="https://github.com/yrianderreumaux/Computational-mechanisms-underlying-partisan-information-processing" target="_blank" rel="noopener noreferrer" class="special">GitHub Code</a>
+
+            <hr />
+            <h3>Project Overview</h3>
+            <p>In this project, I applied drift diffusion modeling to examine how individuals with varying political beliefs gather information and update their beliefs. My findings can provide valuable insights into the decision-making processes and cognitive biases of users, which can be utilized in data science and quantitative UX domains.</p>
+
+
+            <section>
+                <h3>Key Findings</h3>
+                <div class="row custom-row">
+                    <div class="col-12 col-12-medium">
+                        <ul>
+                            <li>Discovered the influence of prior beliefs in making pre-existing opinions resistant to change</li>
+                            <li>Detected how motivations can influence the way people process new information</li>
+                        </ul>
+                    </div>
+                </div>
+                <hr/>
+                <h3>Technical Approach</h3>
+                <h4>Participants</h4>
+                <p>(N = 182) were recruited from CloudResearch, with 58% self-identifying as Democrats</p>
+                <h4>Data Collection and Analysis</h4>
+                <div class="row">
+                    <div class="col-12 col-10-medium">
+                        <ul>
+                            <li>Collected data on Cognitive Reflection (Omega = .65), Numeracy (Omega = .75), and Need for Cognition (Omega = .89) to assess individual differences in cognitive abilities</li>
+                            <li>Utilized drift diffusion modeling to analyze information gathering and belief updating patterns</li>
+                    </div>
+                </div>
+                <h4>Procedure</h4>
+                <p>During the study, participants were presented with Democrat (blue) and Republican (red) fact-check scores moving across the screen for various deidentified topics. Their task was toquickly and accurately determine which candidate was more accurate based on the fact-check scores. These scores were randomly drawn from two normal distributions depending on the candidate's honesty for that particular issue (randomized across trials). Participants were encouraged to be accurate and could make their guesses after observing at least three fact-check scores.
+                    Note: In this example, the Republican candidate made more accurate statements.</p>
+
+                <img data-src="images/DDMFig1.jpg" title="Zesty" width="500" height="300" class="lazyload center" loading="lazy">
+                <h3>Drift Diffusion Modeling</h3>
+                <p>I employed the HDDM toolbox in Python to conduct hierarchical Bayesian parameter estimation of the Drift Diffusion Model.</p>
+                <p>Drift diffusion modeling breaks down decisions into: (1) the starting point of evidence accumulation (z) – a free parameter estimating an initial preference for one of the two outcomes, and (2) the drift rate (v) – a free parameter estimating the precision with which evidence is accumulated towards the two outcomes.</p>
+                <img data-src="images/DDMFig2.jpg" title="Zesty" width="600" height="300" class="lazyload center" loading="lazy">
+                <hr />
+
+                <h3>Results</h3>
+                <h4>Logistic Regression Analysis (Left Figure)</h4>
+                <p>We observed that participants required less evidence to correctly predict the honesty of the ingroup candidate (yellow) compared to the outgroup candidate (purple). This indicates a bias towards ingroup candidates, as the psychometric function shifted to the left when the ingroup candidate was more honest.</p>
+
+                <h4>Drift Diffusion Model Analysis (Right Figure)</h4>
+                <ul>
+                    <li>(A) The model comparison using the Deviance Information Criterion (DIC) revealed that the combined z & v model outperformed all other models, providing a better fit for the data.</li>
+                    <li>(B & C) The density plots show participants' individual posterior parameter estimates, illustrating the distribution of their decision-making biases.</li>
+                    <li>(B) The dashed line represents an unbiased parameter value. In our analysis, 99% of participants had a positive posterior drift rate, suggesting that they placed more weight on information favoring the ingroup candidate over the outgroup candidate.</li>
+                </ul>
+
+                <p>These findings have practical implications for understanding and addressing decision-making biases in real-world applications, such as hiring processes, team dynamics, and user experience design. By identifying the factors that influence biased decision-making, organizations can develop strategies and interventions to promote fair and accurate evaluations of individuals, regardless of their group affiliation.</p>
+                <div class="row">
+                    <div class="column">
+                        <img data-src="images/DDMFig4.jpg" alt="Snow" class="lazyload" style="width:100%" loading="lazy">
+                    </div>
+                    <div class="column">
+                        <img data-src="images/DDMFig3.jpg" alt="Forest" class="lazyload" style="width:100%" loading="lazy">
+                    </div>
+                </div>
+                <hr/>
+
+                <h3>Conclusion</h3>
+                <p>This study highlights the influence of internal social motivations on information processing and decision-making, even in the presence of financial incentives for accuracy. The research findings reveal two key mechanisms that contribute to biased conclusions:</p>
+
+                <ul>
+                    <li>1. Participants' pre-existing preferences for believing the ingroup candidate was more honest led to a biased starting point, requiring less evidence to support this conclusion.</li>
+                    <li>2. Participants were more precise in accumulating evidence favoring the ingroup candidate, resulting in differential weighting of evidence and a biased drift rate.</li>
+                </ul>
+
+                <p>These insights into user decision-making and cognitive biases are valuable in data science and quantitative UX roles, emphasizing the importance of understanding user biases when designing algorithms, interfaces, and user experiences. Showcasing this project demonstrates my technical and analytical expertise, as well as my ability to think critically and creatively about the implications of research for real-world applications.</p>
+            </section>
+        </div>
+        <div class="next-project-container">
+            <a href="JEPG.html" class="next-project-button">Next Project</a>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer id="footer">
+        <ul class="icons">
+            <li><a href="https://twitter.com/yderreum" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+            <li><a href="https://github.com/yrianderreumaux" class="icon brands fa-github"><span class="label">Github</span></a></li>
+            <li><a href="https://www.linkedin.com/in/yrian-derreumaux-73a846b8/" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
+            <li><a href="mailto:yrian.derreumaux@gmail.com" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+        </ul>
+        <p>&copy; Yrian Derreumaux. All rights reserved. | Design by <a href="html5up.net" rel="nofollow">html5up</a>.</p>
+    </footer>
+</div>
+
+<!-- Scripts -->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/jquery.scrollex.min.js"></script>
+<script src="assets/js/jquery.scrolly.min.js"></script>
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/util.min.js"></script>
+<script src="assets/js/main.min.js"></script>
+
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js" async></script>
+</html>

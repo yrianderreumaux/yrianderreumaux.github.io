@@ -112,9 +112,30 @@ input::-moz-focus-inner {
 	flex-wrap: wrap;
 }
 
-.recipe-create-text {
-	flex: 1;
-	padding-right: 15px;
+.next-project-container {
+	text-align: center;
+	margin-bottom: 20px;
+}
+.next-project-button {
+	display: inline-block;
+	text-decoration: none;
+	background-color: lightgrey; /* Light grey background */
+	color: black; /* Black font */
+	padding: 30px 60px;
+	border-radius: 10px;
+	font-size: 16px;
+	font-weight: bold;
+	border: 1px solid black; /* Black border */
+	transition: background-color 0.3s, color 0.3s;
+}
+
+.next-project-button:hover {
+	background-color: #3F8C40;
+	color: white;
+}
+
+.next-project-button:hover {
+	background-color: #505393;
 }
 
 .recipe-create-image {

@@ -1,0 +1,157 @@
+<!DOCTYPE HTML>
+<!--
+	Spectral by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+<head>
+  <title>Learning</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+</head>
+<body class="is-preload">
+
+<!-- Page Wrapper -->
+<div id="page-wrapper">
+
+  <!-- Header -->
+  <header id="header">
+    <h1><a href="index.html"></a></h1>
+    <nav id="nav">
+      <ul>
+        <li class="special">
+          <a href="#menu" class="menuToggle"><span>Menu</span></a>
+          <div id="menu">
+            <ul>
+              <li><a href="index.html">Home</a></li>
+                <li><a href="images/Derreumaux_Website_Resume.pdf">Resume</a></li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+    <section class="wrapper style5">
+      <div class="inner">
+
+        <h3>Stereotypes Disrupt Probabilistic Category Learning</h3>
+        <p></p>
+        <a href="https://psyarxiv.com/qr95k/"  target="_blank" rel="noopener noreferrer"class="special">Published in the Journal of Experimental Psychology: General</a>
+          <br>
+        <a href="https://github.com/yrianderreumaux/stereotypes_disrupt_learning" target="_blank" rel="noopener noreferrer"class="special">Github Code</a>
+          <br>
+          <hr />
+          <h3>Research Question</h3>
+          <p>This project investigates the impact of racial stereotypes on decision-making and behavior, focusing on how these stereotypes disrupt people's ability to learn new associations. We aim to understand the boundary conditions of probabilistic learning and the influence of pre-existing associations.</p>
+
+          <section>
+              <h3>Key Hypotheses</h3>
+              <ul>
+                  <li>First-order effects: Stereotypes may disrupt learning on a trial-by-trial basis due to stereotype application or inhibition.</li>
+                  <li>Second-order effects: Stereotypes may also disrupt learning due to taxed cognitive functioning.</li>
+              </ul>
+
+          <h3>Method</h3>
+          <h4>Participants</h4>
+          <P>A representative sample of 700 participants were recruited.</P>
+              <h4>Assessments</h4>
+              <p>To better understand the impact of stereotypes on learning, we assessed participants' motivations and attitudes using the following measures:</p>
+              <ul>
+                  <li>Internal Motivation to Respond Without Prejudice</li>
+                  <li>External Motivation to Respond Without Prejudice</li>
+                  <li>Social Dominance Orientation</li>
+              </ul>
+
+
+              <h3>Interactive Paradigm with JavaScript</h3>
+              <p>I built an interactive learning task using JavaScript, which allows participants to learn the probabilities of card patterns and receive feedback. You can try the live paradigm <a href="http://www.sfsuspring18psych.com/">here</a>.</p>
+
+              <h4>Displaying Cover Story</h4>
+              <pre><code>// Function to display the next narrative section
+function next_narrative() {
+  $("#narrative_0_text").hide();
+  $("#next_0").hide();
+  document.getElementById("narrative_1_text").style.display = "table";
+  $("#narrative_1_text").fadeIn("slow");
+  $("#next_1").show();
+}
+</code></pre>
+
+              <h4>Generating Card Patterns</h4>
+              <pre><code>// Function to generate the 200 trials with card patterns
+function generateTestSequence() {
+  for (var i = 0; i < patterns.length; i++) {
+    for (var j = 0; j < patterns[i].tsRounded; j++) {
+      var currentPattern = new Pattern(null, null, null, null, null);
+      currentPattern = jQuery.extend(true, {}, patterns[i]);
+      currentPattern.willSteal = "True";
+      nonRandomizedPatterns.push(currentPattern); // Add pattern instance to the array
+    }
+    for (var k = 0; k < patterns[i].nTSRounded; k++) { // Adding patterns with positive response criteria (they will not steal)
+      var currentPatternFalse = new Pattern(null, null, null, null, null);
+      currentPatternFalse = jQuery.extend(true, {}, patterns[i]);
+currentPatternFalse.willSteal = "False";
+      nonRandomizedPatterns.push(currentPatternFalse); // Add pattern instance to the array
+    }
+  }
+}
+</code></pre>
+              <hr />
+              <h3>Results</h3>
+              <h4>Learning Differences Analysis</h4>
+              <p>We analyzed the differences in learning across conditions using a mixed growth model, regressing accuracy onto a dummy-coded factor for condition and a continuous variable for time. The results revealed:</p>
+
+              <ul>
+                  <li>Participants exhibited learning disruptions in the social context compared to the nonsocial context, despite repeated instructions that the social and non-social stimuli were unrelated to the outcome (Studies 1-2).</li>
+              </ul>
+
+              <p>These learning curve differences can be visually observed in the images below:</p>
+              <img src="images/wptRes.jpg" title="Learning Curve 2" class="center responsive-image" alt="Learning curve image 2">
+
+              <h3>Key Takeaways and Implications</h3>
+              <p>Our findings provide valuable insights for understanding the impact of pre-existing associations on learning and decision-making, with practical applications in various fields:</p>
+
+              <ul>
+                  <li><strong>UX Design:</strong> Understanding how cognitive biases and pre-existing associations affect user behavior can help design more effective user interfaces and experiences that aim to reduce the influence of biases.</li>
+                  <li><strong>Data Science:</strong> Our research demonstrates the importance of considering the influence of pre-existing associations when developing algorithms for decision-making and personalization.</li>
+                  <li><strong>Training and Education:</strong> By understanding how pre-existing associations disrupt learning, educators and trainers can develop more effective strategies to help individuals overcome these barriers and enhance learning outcomes.</li>
+              </ul>
+
+          </section>
+      </div>
+        <div class="next-project-container">
+            <a href="zesty.html" class="next-project-button">Next Project</a>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer id="footer">
+        <ul class="icons">
+            <li><a href="https://twitter.com/yderreum" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+            <li><a href="https://github.com/yrianderreumaux" class="icon brands fa-github"><span class="label">Github</span></a></li>
+            <li><a href="https://www.linkedin.com/in/yrian-derreumaux-73a846b8/" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
+            <li><a href="mailto:yrian.derreumaux@gmail.com" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+        </ul>
+        <p>&copy; Yrian Derreumaux. All rights reserved. | Design by <a href="html5up.net" rel="nofollow">html5up</a>.</p>
+    </footer>
+
+      </div>
+
+        <!-- Scripts -->
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/jquery.scrollex.min.js"></script>
+        <script src="assets/js/jquery.scrolly.min.js"></script>
+        <script src="assets/js/browser.min.js"></script>
+        <script src="assets/js/breakpoints.min.js"></script>
+        <script src="assets/js/util.min.js"></script>
+        <script src="assets/js/main.min.js"></script>
+
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js" async></script>
+</html>
+
