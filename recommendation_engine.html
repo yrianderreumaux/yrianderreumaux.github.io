@@ -1,12 +1,12 @@
 <!DOCTYPE HTML>
 <!--
-	Spectral by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+    Spectral by HTML5 UP
+    html5up.net | @ajlkn
+    Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 <html>
 <head>
-    <title>Recommendation Engine</title>
+    <title>Recipe Recommendation Engine</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="assets/css/main.css" />
@@ -35,32 +35,24 @@
         </nav>
     </header>
 
-<!--    &lt;!&ndash; Main &ndash;&gt;-->
-<!--    <article id="main">-->
-<!--        <header>-->
-<!--            <h2>Generic Page</h2>-->
-<!--            <p>Aliquam ut ex ut interdum donec amet imperdiet eleifend</p>-->
-<!--        </header>-->
-        <section class="wrapper style5">
-            <div class="inner">
+    <section class="wrapper style5">
+        <div class="inner">
 
-                <h3>Recipe Recommendation Engine</h3>
+            <h2>Recipe Recommendation Engine</h2>
+            <p>In this project, I designed and deployed a personalized recipe recommendation system using TensorFlow and TFX. The engine uses a deep collaborative filtering model to learn complex nonlinear relationships between user and recipe features, generating personalized recommendations tailored to each user's unique preferences and interests.</p>
 
-                <p>Our market research showed that over 90% of people who visit recipe websites do so for inspiration, and 78% trust recommendations from friends and family more than websites. In response, I designed and deployed a personalized recommendation system using TensorFlow and TFX.
-                    I use a deep collaborative filtering model to learn complex nonlinear relationships between the user and recipe features. This allows the model to generate personalized recommendations that are tailored to each user's unique preferences and interests.</p>
+            <h3>Project Objectives</h3>
+            <ul>
+                <li>Improve user engagement and satisfaction on recipe websites</li>
+                <li>Help users discover new recipes based on their preferences</li>
+                <li>Implement a fully automated pipeline for querying data, training the model, and deploying it to production</li>
+            </ul>
 
-                <h3>Overview of Recommendation Pipeline</h3>
+            <h3>Data Collection and Preprocessing</h3>
+            <p>The first step was to collect user interaction data from the recipe website and preprocess it for model training. This involved querying BigQuery for the most recent interactions, converting the log data to a dataframe, and checking datatypes.</p>
 
-                <p>The goal of recommendation engine was to create a fully automated pipeline that includes querying the data, training the model, and pushing it to production.</p>
-                <img src="images/CF_diagram.png" title="Zesty" class="center responsive-image">
-                <hr />
-
-                <h3>Step by step guide to the first Beta model</h3>
-
-                <p>Below is a broad overview of the model building process</p>
-
-                <h5>Query BigQuery for most recent interactions</h5>
-                <pre><code>query = """SELECT * FROM
+            <h5>Query BigQuery for most recent interactions</h5>
+            <pre><code>query = """SELECT * FROM
 (SELECT event_timestamp, event_name, key, value.string_value
 FROM `zesty-48258.analytics_259899317.events_*`, UNNEST(event_params))
 PIVOT(MAX(string_value) FOR key IN ('user', 'recipe'))
@@ -70,24 +62,29 @@ OR event_name ="view_recipe_other"
 AND recipe IS NOT NULL
 ORDER BY event_timestamp
 DESC</code></pre>
-                <h5>Convert log to dataframe and check data types</h5>
-                <pre><code>df = (
+            <h5>Convert log to dataframe and check data types</h5>
+            <pre><code>df = (
     bqclient.query(query)
     .result()
     .to_dataframe(
         create_bqstorage_client=True,))
  df = df.astype({"recipe_id":'string', "user_id":'string'})</code></pre>
 
-                <h5>Create map for ratings and recipes</h5>
+            <h3>Model Selection and Evaluation</h3>
+            <p>A deep collaborative filtering model was chosen for this task, as it can learn complex nonlinear relationships between user and recipe features, allowing for more accurate and personalized recommendations. The model was evaluated using relevant metrics to measure its performance in generatingrecommendations.</p>
 
-                <pre><code>ratings = ratings.map(lambda x: {
+            <h3>Model Implementation</h3>
+            <!-- Add your image here -->
+            <img src="images/CF_diagram.png" alt="Visual depiction of the process" class="center responsive-image" style="margin-bottom: 20px;">
+            <p>The implementation process involved creating maps for ratings and recipes, building simple user and recipe models, and defining the overall model structure.</p>
+            <h5>Create map for ratings and recipes</h5>
+            <pre><code>ratings = ratings.map(lambda x: {
      "recipe_id": x["recipe_id"],
      "user_id": x["user_id"]})
 recipes = ratings.map(lambda x: x["recipe_id"])</code></pre>
 
-                <h5>Create simple user and recipe models</h5>
-
-                <pre><code>user_model = tf.keras.Sequential([
+            <h5>Create simple user and recipe models</h5>
+            <pre><code>user_model = tf.keras.Sequential([
   tf.keras.layers.experimental.preprocessing.StringLookup(
       vocabulary=unique_user_ids, mask_token=None),
   # We add an additional embedding to account for unknown tokens.
@@ -98,9 +95,8 @@ recipe_model = tf.keras.Sequential([
       vocabulary=unique_recipe_ids, mask_token=None),
   tf.keras.layers.Embedding(len(unique_recipe_ids) + 1, embedding_dimension)])</code></pre>
 
-                <h5>Build model</h5>
-
-                <pre><code>class ZestyModel(tfrs.Model):
+            <h5>Build model</h5>
+            <pre><code>class ZestyModel(tfrs.Model):
 
 def __init__(self, user_model, recipe_model):
     super().__init__()
@@ -118,17 +114,23 @@ def compute_loss(self, features: Dict[Text, tf.Tensor], training=False) -> tf.Te
     # The task computes the loss and the metrics.
 return self.task(user_embeddings, positive_recipe_embeddings)</code></pre>
 
-                <h4>Tangible outcomes after deployment</h4>
+            <h3>Results and Impact</h3>
+            <p>After deploying the recommendation engine, user engagement increased by 30% during the first month, and users provided positive feedback about the personalized recommendations. The engine has proven to be a valuable addition to the recipe platform, helping users discover new recipes and connect with their communities through food.</p>
 
-                <p>Since deploying the recommendation engine, we have seen a significant increase in user engagement and satisfaction. During the first month, user engagement increased by 30%, and we continue to receive positive feedback from users about the personalized recommendations. Overall, the recommendation engine has been a valuable addition to the Zesty platform, helping users discover new recipes and connect with their communities through food.</p>
-            </div>
-        </section>
-    </article>
+            <h3>Future Improvements and Extensions</h3>
+            <p>Potential improvements and extensions to the current recommendation engine include:</p>
+            <ul>
+                <li>Exploring alternative models or techniques to further enhance recommendation quality</li>
+                <li>Incorporating additional user and recipe features to improve personalization</li>
+                <li>Integrating user feedback and real-time data for continuous model improvement</li>
+            </ul>
+
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer id="footer">
         <ul class="icons">
-
             <li><a href="https://twitter.com/yderreum" class="icon brands fa-twitter"><span  class="label">Twitter</span></a></li>
             <li><a href="https://github.com/yrianderreumaux" class="icon brands fa-github"><span class="label">Github</span></a></li>
         </ul>
@@ -141,7 +143,7 @@ return self.task(user_embeddings, positive_recipe_embeddings)</code></pre>
 <script src="assets/js/jquery.scrollex.min.js"></script>
 <script src="assets/js/jquery.scrolly.min.js"></script>
 <script src="assets/js/browser.min.js"></script>
-<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/jsbreakpoints.min.js"></script>
 <script src="assets/js/util.js"></script>
 <script src="assets/js/main.js"></script>
 
@@ -149,3 +151,161 @@ return self.task(user_embeddings, positive_recipe_embeddings)</code></pre>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js" async></script>
 
 </html>
+
+
+
+
+
+
+
+<!--<!DOCTYPE HTML>-->
+<!--&lt;!&ndash;-->
+<!--	Spectral by HTML5 UP-->
+<!--	html5up.net | @ajlkn-->
+<!--	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)-->
+<!--&ndash;&gt;-->
+<!--<html>-->
+<!--<head>-->
+<!--    <title>Recommendation Engine</title>-->
+<!--    <meta charset="utf-8" />-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />-->
+<!--    <link rel="stylesheet" href="assets/css/main.css" />-->
+<!--    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>-->
+<!--</head>-->
+<!--<body class="is-preload">-->
+
+<!--&lt;!&ndash; Page Wrapper &ndash;&gt;-->
+<!--<div id="page-wrapper">-->
+
+<!--    &lt;!&ndash; Header &ndash;&gt;-->
+<!--    <header id="header">-->
+<!--        <h1><a href="index.html"></a></h1>-->
+<!--        <nav id="nav">-->
+<!--            <ul>-->
+<!--                <li class="special">-->
+<!--                    <a href="#menu" class="menuToggle"><span>Menu</span></a>-->
+<!--                    <div id="menu">-->
+<!--                        <ul>-->
+<!--                            <li><a href="index.html">Home</a></li>-->
+<!--                            <li><a href="images/Derreumaux_Website_Resume.pdf">Resume</a></li>-->
+<!--                        </ul>-->
+<!--                    </div>-->
+<!--                </li>-->
+<!--            </ul>-->
+<!--        </nav>-->
+<!--    </header>-->
+
+<!--&lt;!&ndash;    &lt;!&ndash; Main &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;    <article id="main">&ndash;&gt;-->
+<!--&lt;!&ndash;        <header>&ndash;&gt;-->
+<!--&lt;!&ndash;            <h2>Generic Page</h2>&ndash;&gt;-->
+<!--&lt;!&ndash;            <p>Aliquam ut ex ut interdum donec amet imperdiet eleifend</p>&ndash;&gt;-->
+<!--&lt;!&ndash;        </header>&ndash;&gt;-->
+<!--        <section class="wrapper style5">-->
+<!--            <div class="inner">-->
+
+<!--                <h3>Recipe Recommendation Engine</h3>-->
+
+<!--                <p>Our market research showed that over 90% of people who visit recipe websites do so for inspiration, and 78% trust recommendations from friends and family more than websites. In response, I designed and deployed a personalized recommendation system using TensorFlow and TFX.-->
+<!--                    I use a deep collaborative filtering model to learn complex nonlinear relationships between the user and recipe features. This allows the model to generate personalized recommendations that are tailored to each user's unique preferences and interests.</p>-->
+
+<!--                <h3>Overview of Recommendation Pipeline</h3>-->
+
+<!--                <p>The goal of recommendation engine was to create a fully automated pipeline that includes querying the data, training the model, and pushing it to production.</p>-->
+<!--                <img src="images/CF_diagram.png" title="Zesty" class="center responsive-image">-->
+<!--                <hr />-->
+
+<!--                <h3>Step by step guide to the first Beta model</h3>-->
+
+<!--                <p>Below is a broad overview of the model building process</p>-->
+
+<!--                <h5>Query BigQuery for most recent interactions</h5>-->
+<!--                <pre><code>query = """SELECT * FROM-->
+<!--(SELECT event_timestamp, event_name, key, value.string_value-->
+<!--FROM `zesty-48258.analytics_259899317.events_*`, UNNEST(event_params))-->
+<!--PIVOT(MAX(string_value) FOR key IN ('user', 'recipe'))-->
+<!--WHERE event_name ="recipe_liked"-->
+<!--OR event_name ="recipe_saved"-->
+<!--OR event_name ="view_recipe_other"-->
+<!--AND recipe IS NOT NULL-->
+<!--ORDER BY event_timestamp-->
+<!--DESC</code></pre>-->
+<!--                <h5>Convert log to dataframe and check data types</h5>-->
+<!--                <pre><code>df = (-->
+<!--    bqclient.query(query)-->
+<!--    .result()-->
+<!--    .to_dataframe(-->
+<!--        create_bqstorage_client=True,))-->
+<!-- df = df.astype({"recipe_id":'string', "user_id":'string'})</code></pre>-->
+
+<!--                <h5>Create map for ratings and recipes</h5>-->
+
+<!--                <pre><code>ratings = ratings.map(lambda x: {-->
+<!--     "recipe_id": x["recipe_id"],-->
+<!--     "user_id": x["user_id"]})-->
+<!--recipes = ratings.map(lambda x: x["recipe_id"])</code></pre>-->
+
+<!--                <h5>Create simple user and recipe models</h5>-->
+
+<!--                <pre><code>user_model = tf.keras.Sequential([-->
+<!--  tf.keras.layers.experimental.preprocessing.StringLookup(-->
+<!--      vocabulary=unique_user_ids, mask_token=None),-->
+<!--  # We add an additional embedding to account for unknown tokens.-->
+<!--  tf.keras.layers.Embedding(len(unique_user_ids) + 1, embedding_dimension)])-->
+
+<!--recipe_model = tf.keras.Sequential([-->
+<!--  tf.keras.layers.experimental.preprocessing.StringLookup(-->
+<!--      vocabulary=unique_recipe_ids, mask_token=None),-->
+<!--  tf.keras.layers.Embedding(len(unique_recipe_ids) + 1, embedding_dimension)])</code></pre>-->
+
+<!--                <h5>Build model</h5>-->
+
+<!--                <pre><code>class ZestyModel(tfrs.Model):-->
+
+<!--def __init__(self, user_model, recipe_model):-->
+<!--    super().__init__()-->
+<!--    self.recipe_model: tf.keras.Model = recipe_model-->
+<!--    self.user_model: tf.keras.Model = user_model-->
+<!--    self.task: tf.keras.layers.Layer = task-->
+
+<!--def compute_loss(self, features: Dict[Text, tf.Tensor], training=False) -> tf.Tensor:-->
+<!--    # We pick out the user features and pass them into the user model.-->
+<!--    user_embeddings = self.user_model(features["user_id"])-->
+<!--    # And pick out the recipe features and pass them into the recipe model,-->
+<!--    # getting embeddings back.-->
+<!--    positive_recipe_embeddings = self.recipe_model(features["recipe_id"])-->
+
+<!--    # The task computes the loss and the metrics.-->
+<!--return self.task(user_embeddings, positive_recipe_embeddings)</code></pre>-->
+
+<!--                <h4>Tangible outcomes after deployment</h4>-->
+
+<!--                <p>Since deploying the recommendation engine, we have seen a significant increase in user engagement and satisfaction. During the first month, user engagement increased by 30%, and we continue to receive positive feedback from users about the personalized recommendations. Overall, the recommendation engine has been a valuable addition to the Zesty platform, helping users discover new recipes and connect with their communities through food.</p>-->
+<!--            </div>-->
+<!--        </section>-->
+<!--    </article>-->
+
+<!--    &lt;!&ndash; Footer &ndash;&gt;-->
+<!--    <footer id="footer">-->
+<!--        <ul class="icons">-->
+
+<!--            <li><a href="https://twitter.com/yderreum" class="icon brands fa-twitter"><span  class="label">Twitter</span></a></li>-->
+<!--            <li><a href="https://github.com/yrianderreumaux" class="icon brands fa-github"><span class="label">Github</span></a></li>-->
+<!--        </ul>-->
+<!--    </footer>-->
+
+<!--</div>-->
+
+<!--&lt;!&ndash; Scripts &ndash;&gt;-->
+<!--<script src="assets/js/jquery.min.js"></script>-->
+<!--<script src="assets/js/jquery.scrollex.min.js"></script>-->
+<!--<script src="assets/js/jquery.scrolly.min.js"></script>-->
+<!--<script src="assets/js/browser.min.js"></script>-->
+<!--<script src="assets/js/breakpoints.min.js"></script>-->
+<!--<script src="assets/js/util.js"></script>-->
+<!--<script src="assets/js/main.js"></script>-->
+
+<!--</body>-->
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js" async></script>-->
+
+<!--</html>-->

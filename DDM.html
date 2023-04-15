@@ -41,19 +41,22 @@
             <h3>Drift Diffusion Modeling in Political Decision-Making</h3>
             <p>Investigating the impact of cognitive biases on information processing and belief updating</p>
             <a href="https://pubmed.ncbi.nlm.nih.gov/36240612/" target="_blank" rel="noopener noreferrer" class="special">Published in Cognition</a>
-            <a href="https://github.com/yrianderreumaux/Computational-mechanisms-underlying-partisan-information-processing" target="_blank" rel="noopener noreferrer" class="special">Code</a>
+            <br>
+            <a href="https://github.com/yrianderreumaux/Computational-mechanisms-underlying-partisan-information-processing" target="_blank" rel="noopener noreferrer" class="special">Code on GitHub</a>
 
             <hr />
             <h3>Project Overview</h3>
-            <p>In this project, I applied drift diffusion modeling to examine how individuals with varying political beliefs gather information and update their beliefs. This research can provide valuable insights into the decision-making processes and cognitive biases of users, which can be utilized in data science and quantitative UX domains.</p>
+            <p>In this project, I applied drift diffusion modeling to examine how individuals with varying political beliefs gather information and update their beliefs. My findings can provide valuable insights into the decision-making processes and cognitive biases of users, which can be utilized in data science and quantitative UX domains.</p>
+
 
             <section>
                 <h3>Key Findings</h3>
-                <div class="row">
+                <div class="row custom-row">
                     <div class="col-12 col-12-medium">
                         <ul>
                             <li>Discovered the influence of prior beliefs in making pre-existing opinions resistant to change</li>
                             <li>Detected how motivations can influence the way people process new information</li>
+                        </ul>
                     </div>
                 </div>
                 <hr/>
@@ -69,13 +72,13 @@
                     </div>
                 </div>
                 <h4>Procedure</h4>
-                <p>During the study, participants were presented with Democrat (blue) and Republican (red) fact-check scores moving across the screen for various deidentified topics. Their task was to quickly and accurately determine which candidate was more accurate based on the fact-check scores. These scores were randomly drawn from two normal distributions depending on the candidate's honesty for that particular issue (randomized across trials). Participants were encouraged to be accurate and could make their guesses after observing at least three fact-check scores.
+                <p>During the study, participants were presented with Democrat (blue) and Republican (red) fact-check scores moving across the screen for various deidentified topics. Their task was toquickly and accurately determine which candidate was more accurate based on the fact-check scores. These scores were randomly drawn from two normal distributions depending on the candidate's honesty for that particular issue (randomized across trials). Participants were encouraged to be accurate and could make their guesses after observing at least three fact-check scores.
                     Note: In this example, the Republican candidate made more accurate statements.</p>
 
                 <img data-src="images/DDMFig1.jpg" title="Zesty" width="500" height="300" class="lazyload center" loading="lazy">
                 <h3>Drift Diffusion Modeling</h3>
                 <p>I employed the HDDM toolbox in Python to conduct hierarchical Bayesian parameter estimation of the Drift Diffusion Model.</p>
-                <p>Drift diffusion modeling breaks down decisions into: (1) the starting point of evidence accumulation (z) – a free parameter estimating an initial preference for one of the two outcomes, and (2) the drift rate (v) – a free parameter estimating the precision with which evidence is accumulated towards the twooutcomes.</p>
+                <p>Drift diffusion modeling breaks down decisions into: (1) the starting point of evidence accumulation (z) – a free parameter estimating an initial preference for one of the two outcomes, and (2) the drift rate (v) – a free parameter estimating the precision with which evidence is accumulated towards the two outcomes.</p>
                 <img data-src="images/DDMFig2.jpg" title="Zesty" width="600" height="300" class="lazyload center" loading="lazy">
                 <hr />
                 <h3>Results</h3>
@@ -94,18 +97,92 @@
                 </div>
                 <hr/>
                 <h3>Conclusion</h3>
-                <p>The study revealed that even with financial incentives for accuracy, internal social motivations can still influence information processing and lead to biased conclusions. Participants required less and weaker evidence to categorize the ingroup candidate as more honest compared to the outgroup, and were more accurate when the ingroup candidate was indeed more honest.
+                <p>This study highlights the influence of internal social motivations on information processing and decision-making, even in the presence of financial incentives for accuracy. The research findings reveal two key mechanisms that contribute to biased conclusions:</p>
 
-                    Drift Diffusion Models (DDMs) showed that these biases stemmed from two distinct mechanisms:
-                    1. Pre-existing preferences for believing the ingroup candidate was more honest led participants to require less evidence to make that conclusion (i.e., biased starting point).
-                    2. Participants were more precise in accumulating evidence that favored the ingroup candidate compared to the outgroup, resulting in differential weighting of evidence that favored the ingroup (i.e., biased drift rate).
+                <ul>
+                    <li>1. Participants' pre-existing preferences for believing the ingroup candidate was more honest led to a biased starting point, requiring less evidence to support this conclusion.</li>
+                    <li>2. Participants were more precise in accumulating evidence favoring the ingroup candidate, resulting in differential weighting of evidence and a biased drift rate.</li>
+                </ul>
 
-                    These insights into user decision-making processes and cognitive biases can be valuable in data science and quantitative UX roles, as they highlight the importance of understanding user biases when designing algorithms, interfaces, and user experiences.
-            </section>
-        </div>
+                <p>These insights into user decision-making and cognitive biases are valuable in data science and quantitative UX roles, emphasizing the importance of understanding user biases when designing algorithms, interfaces, and user experiences. Showcasing this project demonstrates my technical and analytical expertise, as well as my ability to think critically and creatively about the implications of research for real-world applications.</p>
             </section>
         </div>
     </section>
+
+
+
+
+
+<!--    <section class="wrapper style5">-->
+<!--        <div class="inner">-->
+<!--            <h3>Drift Diffusion Modeling in Political Decision-Making</h3>-->
+<!--            <p>Investigating the impact of cognitive biases on information processing and belief updating</p>-->
+<!--            <a href="https://pubmed.ncbi.nlm.nih.gov/36240612/" target="_blank" rel="noopener noreferrer" class="special">Published in Cognition</a>-->
+<!--            <a href="https://github.com/yrianderreumaux/Computational-mechanisms-underlying-partisan-information-processing" target="_blank" rel="noopener noreferrer" class="special">Code</a>-->
+
+<!--            <hr />-->
+<!--            <h3>Project Overview</h3>-->
+<!--            <p>In this project, I applied drift diffusion modeling to examine how individuals with varying political beliefs gather information and update their beliefs. This research can provide valuable insights into the decision-making processes and cognitive biases of users, which can be utilized in data science and quantitative UX domains.</p>-->
+
+<!--            <section>-->
+<!--                <h3>Key Findings</h3>-->
+<!--                <div class="row">-->
+<!--                    <div class="col-12 col-12-medium">-->
+<!--                        <ul>-->
+<!--                            <li>Discovered the influence of prior beliefs in making pre-existing opinions resistant to change</li>-->
+<!--                            <li>Detected how motivations can influence the way people process new information</li>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <hr/>-->
+<!--                <h3>Technical Approach</h3>-->
+<!--                <h4>Participants</h4>-->
+<!--                <p>(N = 182) were recruited from CloudResearch, with 58% self-identifying as Democrats</p>-->
+<!--                <h4>Data Collection and Analysis</h4>-->
+<!--                <div class="row">-->
+<!--                    <div class="col-12 col-10-medium">-->
+<!--                        <ul>-->
+<!--                            <li>Collected data on Cognitive Reflection (Omega = .65), Numeracy (Omega = .75), and Need for Cognition (Omega = .89) to assess individual differences in cognitive abilities</li>-->
+<!--                            <li>Utilized drift diffusion modeling to analyze information gathering and belief updating patterns</li>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <h4>Procedure</h4>-->
+<!--                <p>During the study, participants were presented with Democrat (blue) and Republican (red) fact-check scores moving across the screen for various deidentified topics. Their task was to quickly and accurately determine which candidate was more accurate based on the fact-check scores. These scores were randomly drawn from two normal distributions depending on the candidate's honesty for that particular issue (randomized across trials). Participants were encouraged to be accurate and could make their guesses after observing at least three fact-check scores.-->
+<!--                    Note: In this example, the Republican candidate made more accurate statements.</p>-->
+
+<!--                <img data-src="images/DDMFig1.jpg" title="Zesty" width="500" height="300" class="lazyload center" loading="lazy">-->
+<!--                <h3>Drift Diffusion Modeling</h3>-->
+<!--                <p>I employed the HDDM toolbox in Python to conduct hierarchical Bayesian parameter estimation of the Drift Diffusion Model.</p>-->
+<!--                <p>Drift diffusion modeling breaks down decisions into: (1) the starting point of evidence accumulation (z) – a free parameter estimating an initial preference for one of the two outcomes, and (2) the drift rate (v) – a free parameter estimating the precision with which evidence is accumulated towards the twooutcomes.</p>-->
+<!--                <img data-src="images/DDMFig2.jpg" title="Zesty" width="600" height="300" class="lazyload center" loading="lazy">-->
+<!--                <hr />-->
+<!--                <h3>Results</h3>-->
+<!--                <h4>Logistic Regression (left figure)</h4>-->
+<!--                <p>Participants needed less evidence before correctly predicting that the ingroup candidate was more honest (yellow) compared to the outgroup candidate (purple). When the ingroup candidate was more honest, participant's psychometric function shifted to the left compared to when the outgroup candidate was more honest.-->
+<!--                <h4>Drift Diffusion Results (right figure)</h4>-->
+<!--                (A) Comparison of DIC difference from the null model reveals that the z & v model performed significantly better than all other models.-->
+<!--                (B & C) Density plots of participants' individual posterior parameter estimates. The dashed line in panel B indicates the value of an unbiased parameter. (B) 99% of participants had a posterior drift rate that was positive, indicating that they weighted information favoring the ingroup candidate more than information favoring the outgroup candidate.</p>-->
+<!--                <div class="row">-->
+<!--                    <div class="column">-->
+<!--                        <img data-src="images/DDMFig4.jpg" alt="Snow" class="lazyload" style="width:100%" loading="lazy">-->
+<!--                    </div>-->
+<!--                    <div class="column">-->
+<!--                        <img data-src="images/DDMFig3.jpg" alt="Forest" class="lazyload" style="width:100%" loading="lazy">-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <hr/>-->
+<!--                <h3>Conclusion</h3>-->
+<!--                <p>The study revealed that even with financial incentives for accuracy, internal social motivations can still influence information processing and lead to biased conclusions. Participants required less and weaker evidence to categorize the ingroup candidate as more honest compared to the outgroup, and were more accurate when the ingroup candidate was indeed more honest.-->
+
+<!--                    Drift Diffusion Models (DDMs) showed that these biases stemmed from two distinct mechanisms:-->
+<!--                    1. Pre-existing preferences for believing the ingroup candidate was more honest led participants to require less evidence to make that conclusion (i.e., biased starting point).-->
+<!--                    2. Participants were more precise in accumulating evidence that favored the ingroup candidate compared to the outgroup, resulting in differential weighting of evidence that favored the ingroup (i.e., biased drift rate).-->
+
+<!--                    These insights into user decision-making processes and cognitive biases can be valuable in data science and quantitative UX roles, as they highlight the importance of understanding user biases when designing algorithms, interfaces, and user experiences.-->
+<!--            </section>-->
+<!--        </div>-->
+<!--            </section>-->
+<!--        </div>-->
+<!--    </section>-->
 
 
         <!-- Footer -->

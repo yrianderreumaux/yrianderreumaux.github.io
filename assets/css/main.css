@@ -104,6 +104,36 @@ input::-moz-focus-inner {
 	margin-bottom: 10px; /* Adjust this value to reduce/increase the space */
 }
 
+
+.recipe-create-container{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex-wrap: wrap;
+}
+
+.recipe-create-text {
+	flex: 1;
+	padding-right: 15px;
+}
+
+.recipe-create-image {
+	flex: 1;
+	padding-left: 15px;
+}
+
+@media (max-width: 767px) {
+	.recipe-create-text,
+	.recipe-create-image {
+		padding: 0;
+		margin-bottom: 15px;
+	}
+}
+
+.custom-row {
+	margin-bottom: -20px;
+}
+
 .grid-item {
 	border: 2px solid #d3d3d3; /* Light grey border */
 	padding: 15px; /* Add some padding inside the border */
