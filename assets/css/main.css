@@ -71,7 +71,26 @@ input::-moz-focus-inner {
 	margin-right: auto;
 	width: 50%;
 }
+.column img {
+	width: 100%;
+	height: auto;
+}
 
+/* Adjust styling for large screens */
+@media screen and (min-width: 1024px) {
+	.column img {
+		width: 50%;
+		height: auto;
+	}
+}
+
+/* Adjust styling for medium screens */
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+	.column img {
+		width: 75%;
+		height: auto;
+	}
+}
 /* Three image containers (use 25% for four, and 50% for two, etc) */
 .column {
 	float: left;
