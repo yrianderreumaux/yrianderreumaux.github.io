@@ -91,6 +91,26 @@ input::-moz-focus-inner {
 		height: auto;
 	}
 }
+
+
+.icon-image img {
+	width: 100px; /* Reduced the width value */
+	height: auto; /* Maintains the aspect ratio */
+	display: block;
+	margin: 0 auto; /* Centers the image within the container */
+}
+
+.major {
+	margin-bottom: 10px; /* Adjust this value to reduce/increase the space */
+}
+
+.grid-item {
+	border: 2px solid #d3d3d3; /* Light grey border */
+	padding: 15px; /* Add some padding inside the border */
+	border-radius: 5px; /* Optional: Add rounded corners to the border */
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow effect */
+	margin: 15px; /* Add space between each project */
+}
 /* Three image containers (use 25% for four, and 50% for two, etc) */
 .column {
 	float: left;
