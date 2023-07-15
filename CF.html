@@ -53,7 +53,7 @@
             <h5>Query BigQuery for most recent interactions</h5>
             <pre><code>query = """SELECT * FROM
 (SELECT event_timestamp, event_name, key, value.string_value
-FROM `zesty-48258.analytics_259899317.events_*`, UNNEST(event_params))
+FROM `EVENTS`, UNNEST(event_params))
 PIVOT(MAX(string_value) FOR key IN ('user', 'recipe'))
 WHERE event_name ="recipe_liked"
 OR event_name ="recipe_saved"
